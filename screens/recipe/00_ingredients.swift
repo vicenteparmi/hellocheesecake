@@ -9,5 +9,8 @@ import SwiftUI
 struct IngredientsView: View {
     var body: some View {
         Text("Ingredients")
+            .font(.headline)
+            .padding()
+            .foregroundStyle(.white)
     }
 }

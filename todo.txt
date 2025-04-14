@@ -1,0 +1,6 @@
+TODO:
+
+- Import my 3d model to the app with a animation
+- Prepare the cheesecake 3d asset with animation
+- Investigate the controller inside the ios app
+- Use a shader to make the background

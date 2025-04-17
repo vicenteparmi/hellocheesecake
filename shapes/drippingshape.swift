@@ -25,7 +25,7 @@ struct DrippingShape: Shape {
         
         for i in (0...drips).reversed() {
             let x = CGFloat(i) * width
-            let dropHeight = CGFloat.random(in: 20...50)
+            let dropHeight = CGFloat.random(in: 10...80)
             
             path.addCurve(
                 to: CGPoint(x: x, y: rect.height),

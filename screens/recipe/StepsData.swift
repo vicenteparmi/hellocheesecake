@@ -10,9 +10,9 @@ import SwiftUI
 class StepsData: ObservableObject {
     @Published var currentStep: Int = 0
     @Published var steps: [Step] = [
-        Step(title: "Ingredientes", content: "Aqui estão os ingredientes necessários"),
+        Step(title: "Ingredientes", content: "Aqui estão os ingredientes necessários. Adicione-os à cesta de compras."),
         Step(title: "Equipamentos", content: "Você precisará destes equipamentos"),
-        // Mais etapas serão adicionadas aqui
+        Step(title: "Preparação", content: "Siga estes passos para preparar o cheesecake"),
     ]
     
     func getStep(at index: Int) -> Step {

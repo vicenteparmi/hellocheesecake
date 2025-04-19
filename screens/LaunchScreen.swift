@@ -47,7 +47,7 @@ struct LaunchScreen: View {
                     .frame(width: geometry.size.width, height: geometry.size.height / 6)
                     
             }
-            .background(fadedYellow)
+            .background(Color.white)
             .edgesIgnoringSafeArea(.bottom)
             .edgesIgnoringSafeArea(.top)
         }

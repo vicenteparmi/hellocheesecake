@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Creme de Leite.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

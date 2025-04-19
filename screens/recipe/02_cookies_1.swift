@@ -9,13 +9,13 @@ import SwiftUI
 
 struct Cookies_1: View {
     @Binding var currentTab: Int
-    @State private var cookiesOnBlender = 0;
-    @State private var remainingCookies = 3;
-    @State private var blendedCookies = 0;
-    @State private var showNextButton = false;
-    
-    @State private var isBlending = false;
-    
+    @State private var cookiesOnBlender = 0
+    @State private var remainingCookies = 6
+    @State private var blendedCookies = 0
+    @State private var showNextButton = false
+
+    @State private var isBlending = false
+
     var body: some View {
         VStack {
             ZStack {
@@ -27,56 +27,125 @@ struct Cookies_1: View {
                     }
                     .padding(.top, 80)
                     .padding(.horizontal, 24)
-                    
+
                     HStack {
-                        Text("Coloque as bolachas de maisena no liquidificador e bata até virar uma farofa. Mas cuidado! Você precisa adicionar aos poucos para não quebrar o liquidificador.")
-                            .font(.body)
-                            .foregroundColor(.black)
+                        Text(
+                            "Coloque as bolachas de maisena no liquidificador e bata até virar uma farofa. Mas cuidado! Você precisa adicionar aos poucos para não quebrar o liquidificador."
+                        )
+                        .font(.body)
+                        .foregroundColor(.black)
                         Spacer()
                     }
                     .padding(.horizontal, 24)
                     .padding(.bottom, 16)
-                    
+
                     Spacer()
-                    
+
                     // Interface para adicionar cookies e bater no liquidificador
                     VStack {
                         // Imagem do liquidificador
-                        Image("blender")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 200, height: 200)
-                            .padding(.bottom, 16)
-                        
+                        Image(
+                            cookiesOnBlender == 3
+                                ? "Liqui 3"
+                                : cookiesOnBlender == 2
+                                    ? "Liqui 2"
+                                    : cookiesOnBlender == 1
+                                        ? "Liqui 1" : "Liqui 0"
+                        )
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 200)
+                        .padding(.bottom, 16)
+                        .modifier(
+                            ShakeEffect(
+                                animatableData: isBlending
+                                    ? CGFloat(Date().timeIntervalSince1970).truncatingRemainder(
+                                        dividingBy: 10) : 0)
+                        )
+                        .animation(
+                            isBlending
+                                ? Animation.linear(duration: 0.1).repeatForever(autoreverses: true)
+                                : .default, value: isBlending)
+
                         // Cookies inteiros e batidos lado a lado
-                        HStack {
-                            VStack {
-                                // Mostra os cookies conforme cookiesRemaining em uma pilha de imagens
-                                ForEach(0..<remainingCookies, id: \.self) { _ in
-                                    Image("cookie")
+
+                        HStack(alignment: .bottom, spacing: -30) {
+                            // Mostra os cookies conforme cookiesRemaining em uma pilha de imagens
+                            HStack(alignment: .bottom, spacing: 0) {
+
+                                if remainingCookies > 5 {
+                                    Image("Bolacha 3")
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(width: 50, height: 50)
+                                        .frame(width: 50, height: 100, alignment: .bottom)
                                         .padding(4)
-                                    
-                                    // Adiciona um espaço entre os cookies
-                                    Spacer()
-                                        .frame(height: 4)
-                                    
+                                } else if remainingCookies > 4 {
+                                    Image("Bolacha 2")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 50, height: 100, alignment: .bottom)
+                                        .padding(4)
+                                } else if remainingCookies > 3 {
+                                    Image("Bolacha 1")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 50, height: 100, alignment: .bottom)
+                                        .padding(4)
+                                }
+
+                                if remainingCookies > 2 {
+                                    Image("Bolacha 3")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 50, height: 100, alignment: .bottom)
+                                        .padding(4)
+                                } else if remainingCookies > 1 {
+                                    Image("Bolacha 2")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 50, height: 100, alignment: .bottom)
+                                        .padding(4)
+                                } else if remainingCookies > 0 {
+                                    Image("Bolacha 1")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 50, height: 100, alignment: .bottom)
+                                        .padding(4)
                                 }
                             }
+                            .frame(
+                                maxWidth: .infinity,
+                                minHeight: 100,
+                                maxHeight: 100,
+                                alignment: .bottomTrailing)
 
+                            Spacer()
+                                .frame(width: 16)
+                            VStack {
+                                Image(
+                                    blendedCookies > 5
+                                        ? "Forma 2"
+                                        : blendedCookies > 1
+                                            ? "Forma 1"
+                                                : "Forma 0"
+                                )
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 300, height: 70, alignment: .bottom)
+                                .padding(4)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .center)
                         }
                     }
-                    
+
                     Spacer()
-                    
+
                     // Controles
                     HStack {
-                        
+
                         // Botão para adicionar um cookie
                         Button {
-                            if cookiesOnBlender < 3 {
+                            if remainingCookies > 0 && cookiesOnBlender < 3 {
                                 cookiesOnBlender += 1
                                 remainingCookies -= 1
                             }
@@ -90,33 +159,58 @@ struct Cookies_1: View {
                         .cornerRadius(20)
                         .shadow(radius: 1)
                         .padding(.trailing, 16)
-                        
+                        .disabled(isBlending)
+                        .opacity(isBlending ? 0.5 : 1)
+
                         // Botão para bater os cookies no liquidificador (alternar)
                         Button {
-                            isBlending.toggle()
+                            if cookiesOnBlender > 2 && !isBlending {
+                                // Alerta avisando para colocar menos cookies no liquidificador para moer melhor
+                                let alert = UIAlertController(
+                                    title: "Atenção",
+                                    message:
+                                        "Coloque menos bolacha no liquidificador para moer melhor.",
+                                    preferredStyle: .alert
+                                )
+                                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                                UIApplication.shared.windows.first?.rootViewController?.present(
+                                    alert, animated: true)
+                            } else if cookiesOnBlender > 0 {
+                                isBlending = true
+
+                                // Para após 2 segundos
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    isBlending = false
+                                    blendedCookies += cookiesOnBlender
+                                    cookiesOnBlender = 0
+
+                                    // Verifica se todos já foram batidos
+                                    if blendedCookies == 6 {
+                                        showNextButton = true
+                                    } else {
+                                        // Se não, mostra o botão "Continuar"
+                                        showNextButton = false
+                                    }
+                                }
+                            }
                         } label: {
-                            Image(systemName: isBlending ? "play.circle.fill" : "pause.circle.fill")
-                                .foregroundColor(.orange)
-                                .font(.title)
+                            Image(
+                                systemName: !isBlending ? "play.circle.fill" : "pause.circle.fill"
+                            )
+                            .foregroundColor(.orange)
+                            .font(.title)
                         }
                         .padding()
                         .background(Color.white)
                         .cornerRadius(20)
                         .shadow(radius: 1)
                         .padding(.trailing, 16)
-                        
+
                         // Botão para remover um cookie do liquidificador
                         Button {
-                            if blendedCookies < 3 && cookiesOnBlender > 0 {
-                                blendedCookies += 1
+                            if cookiesOnBlender > 0 {
+                                remainingCookies += 1
                                 cookiesOnBlender -= 1
-                                
-                                // Verificar se todos os cookies foram moídos
-                                if blendedCookies == 3 {
-                                    withAnimation(.spring(response: 0.6, dampingFraction: 0.7)) {
-                                        showNextButton = true
-                                    }
-                                }
                             }
                         } label: {
                             Image(systemName: "minus.circle.fill")
@@ -127,19 +221,21 @@ struct Cookies_1: View {
                         .background(Color.white)
                         .cornerRadius(20)
                         .shadow(radius: 1)
+                        .disabled(isBlending)
+                        .opacity(isBlending ? 0.5 : 1)
                     }
-                    .padding(.bottom, showNextButton ? 80 : 32) // Adiciona espaço adicional quando o botão "Continuar" está visível
+                    .padding(.bottom, showNextButton ? 80 : 32)  // Adiciona espaço adicional quando o botão "Continuar" está visível
                     .animation(.spring(response: 0.6, dampingFraction: 0.7), value: showNextButton)
-                    
+
                     Spacer()
                         .frame(height: 32)
                 }
-                
+
                 // Botão para avançar para a próxima tela
                 if showNextButton {
                     VStack {
                         Spacer()
-                        
+
                         Button {
                             currentTab += 1
                         } label: {
@@ -155,10 +251,24 @@ struct Cookies_1: View {
                         .padding(.horizontal, 40)
                         .padding(.bottom, 30)
                         .transition(.move(edge: .bottom))
-                        .animation(.spring(response: 0.6, dampingFraction: 0.7), value: showNextButton)
+                        .animation(
+                            .spring(response: 0.6, dampingFraction: 0.7), value: showNextButton)
                     }
                 }
             }
         }
+    }
+}
+
+// Is blending animation
+struct ShakeEffect: GeometryEffect {
+    var animatableData: CGFloat
+
+    func effectValue(size: CGSize) -> ProjectionTransform {
+        ProjectionTransform(
+            CGAffineTransform(
+                translationX:
+                    sin(animatableData * .pi * 8) * 3,
+                y: cos(animatableData * .pi * 12) * 2))
     }
 }

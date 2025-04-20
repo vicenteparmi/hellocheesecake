@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var currentTab = 10
+    @State private var currentTab = 14
 
     var body: some View {
         Group {
@@ -28,11 +28,20 @@ struct ContentView: View {
                 Jelly_2(currentTab: $currentTab)
             case 10:
                 Fridge(currentTab: $currentTab)
+            case 11:
+                Strawberry_1(currentTab: $currentTab)
+            case 12:
+                Strawberry_2(currentTab: $currentTab)
+            case 13:
+                Combining(currentTab: $currentTab)
+            case 14:
+                ClosureView(currentTab: $currentTab)
             default:
                 LaunchScreen(step: $currentTab)
             }
         }
         .background(AnimatedBackground())
+        .background(Color.white)
         .edgesIgnoringSafeArea(.bottom)
         .edgesIgnoringSafeArea(.top)
     }

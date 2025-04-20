@@ -20,14 +20,16 @@ struct Oven: View {
                     HStack {
                         Text("Coloque no forno")
                             .font(.title)
+                            .fontWeight(.bold)
                         Spacer()
                     }
                     .padding(.top, 80)
                     .padding(.horizontal, 24)
+                    .padding(.bottom, 16)
 
                     HStack {
                         Text(
-                            "Agora é hora de colocar a bolacha amanteigada no forno. Clique na tigela para primeiro ajustar a forma das bolachas e em seguida colocar a forma no forno."
+                            "Vamos colocar a bolacha amanteigada no forno. Clique na tigela para primeiro compactar as bolachas na forma e em seguida colocar a forma no forno."
                         )
                         .font(.body)
                         .foregroundColor(.black)

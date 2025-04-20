@@ -18,10 +18,12 @@ struct Jelly_1: View {
                     HStack {
                         Text("Adicione a gelatina")
                             .font(.title)
+                            .fontWeight(.bold)
                         Spacer()
                     }
                     .padding(.top, 80)
                     .padding(.horizontal, 24)
+                    .padding(.bottom, 16)
 
                     HStack {
                         Text("Adicione a gelatina à mistura. Não se esqueça de dissolver em água conforme as instruções da embalagem.")

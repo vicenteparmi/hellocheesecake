@@ -22,13 +22,15 @@ struct Mix_2: View {
                     HStack {
                         Text("Misture os ingredientes")
                             .font(.title)
+                            .fontWeight(.bold)
                         Spacer()
                     }
                     .padding(.top, 80)
                     .padding(.horizontal, 24)
+                    .padding(.bottom, 16)
 
                     HStack {
-                        Text("Use a batedeira para misturar todos os ingredientes na tigela até obter uma mistura homogênea.")
+                        Text("Use a batedeira para combinar todos os ingredientes na tigela até obter uma mistura homogênea. Se você não tiver uma batedeira, pode usar um mixer manual.")
                             .font(.body)
                             .foregroundColor(.black)
                         Spacer()

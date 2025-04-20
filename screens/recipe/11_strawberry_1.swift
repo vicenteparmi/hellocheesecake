@@ -29,10 +29,12 @@ struct Strawberry_1: View {
                         HStack {
                             Text("Pique os morangos")
                                 .font(.title)
+                                .fontWeight(.bold)
                             Spacer()
                         }
                         .padding(.top, 80)
                         .padding(.horizontal, 24)
+                        .padding(.bottom, 16)
                         
                         HStack {
                             Text("Agora vamos preparar a calda de morangos. Para isso, pique os morangos em pedaços pequenos (ou bata no liquidificador).")

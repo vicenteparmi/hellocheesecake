@@ -24,14 +24,16 @@ struct Cookies_2: View {
                     HStack {
                         Text("Adicione a manteiga")
                             .font(.title)
+                            .fontWeight(.bold)
                         Spacer()
                     }
                     .padding(.top, 80)
                     .padding(.horizontal, 24)
+                    .padding(.bottom, 16)
 
                     HStack {
                         Text(
-                            "Agora é hora de adicionar manteiga à nossa mistura de cookies. Clique na colher para despejar a manteiga na tigela."
+                            "Agora é hora de adicionar manteiga à nossa mistura de bolachas. Clique na colher para despejar a manteiga na tigela."
                         )
                         .font(.body)
                         .foregroundColor(.black)

@@ -23,10 +23,12 @@ struct Cookies_1: View {
                     HStack {
                         Text("Vamos começar com as bolachas")
                             .font(.title)
+                            .fontWeight(.bold)
                         Spacer()
                     }
                     .padding(.top, 80)
                     .padding(.horizontal, 24)
+                    .padding(.bottom, 16)
 
                     HStack {
                         Text(

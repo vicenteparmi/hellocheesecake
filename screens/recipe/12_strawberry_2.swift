@@ -21,10 +21,12 @@ struct Strawberry_2: View {
                     HStack {
                         Text("Reduza os morangos")
                             .font(.title)
+                            .fontWeight(.bold)
                         Spacer()
                     }
                     .padding(.top, 80)
                     .padding(.horizontal, 24)
+                    .padding(.bottom, 16)
 
                     HStack {
                         Text(

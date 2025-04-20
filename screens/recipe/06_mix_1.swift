@@ -28,14 +28,16 @@ struct Mix_1: View {
                     HStack {
                         Text("Misture os ingredientes")
                             .font(.title)
+                            .fontWeight(.bold)
                         Spacer()
                     }
                     .padding(.top, 80)
                     .padding(.horizontal, 24)
+                    .padding(.bottom, 16)
 
                     HStack {
                         Text(
-                            "Misture o leite condensado, o creme de leite, o cream cheese e a nata em uma tigela. Clique em cada um para adicionar à tigela."
+                            "Adicione o leite condensado, o creme de leite, o cream cheese e a nata em uma tigela. Clique em cada um para adicionar à tigela."
                         )
                         .font(.body)
                         .foregroundColor(.black)

@@ -18,6 +18,7 @@ struct IngredientsView: View {
                     Text("Vamos preparar os ingredientes?")
                         .font(.title)
                         .fontWeight(.bold)
+                        .foregroundColor(.black)
                     Spacer()
                 }
                 .padding(.top, 80)

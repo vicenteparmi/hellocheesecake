@@ -21,6 +21,7 @@ struct Fridge: View {
                         Text("Coloque na forma e leve à geladeira")
                             .font(.title)
                             .fontWeight(.bold)
+                            .foregroundColor(.black)
                         Spacer()
                     }
                     .padding(.top, 80)

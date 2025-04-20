@@ -24,6 +24,7 @@ struct Cookies_1: View {
                         Text("Vamos começar com as bolachas")
                             .font(.title)
                             .fontWeight(.bold)
+                            .foregroundColor(.black)
                         Spacer()
                     }
                     .padding(.top, 80)
@@ -129,7 +130,7 @@ struct Cookies_1: View {
                                         ? "Forma 2"
                                         : blendedCookies > 1
                                             ? "Forma 1"
-                                                : "Forma 0"
+                                            : "Forma 0"
                                 )
                                 .resizable()
                                 .scaledToFit()
@@ -209,7 +210,8 @@ struct Cookies_1: View {
                         .disabled(cookiesOnBlender == 0)
                         .opacity(cookiesOnBlender == 0 ? 0.5 : 1)
                         .animation(
-                            .spring(response: 0.6, dampingFraction: 0.7), value: isBlending)
+                            .spring(response: 0.6, dampingFraction: 0.7), value: isBlending
+                        )
                         .padding(.trailing, 16)
 
                         // Botão para remover um cookie do liquidificador

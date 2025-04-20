@@ -25,6 +25,7 @@ struct Cookies_2: View {
                         Text("Adicione a manteiga")
                             .font(.title)
                             .fontWeight(.bold)
+                            .foregroundColor(.black)
                         Spacer()
                     }
                     .padding(.top, 80)

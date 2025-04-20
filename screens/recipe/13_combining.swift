@@ -21,6 +21,7 @@ struct Combining: View {
                         Text("Adicione a cobertura")
                             .font(.title)
                             .fontWeight(.bold)
+                            .foregroundColor(.black)
                         Spacer()
                     }
                     .padding(.top, 80)

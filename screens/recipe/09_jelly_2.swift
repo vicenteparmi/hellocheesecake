@@ -22,6 +22,7 @@ struct Jelly_2: View {
                         Text("Misture a gelatina")
                             .font(.title)
                             .fontWeight(.bold)
+                            .foregroundColor(.black)
                         Spacer()
                     }
                     .padding(.top, 80)

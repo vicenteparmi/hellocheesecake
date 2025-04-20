@@ -21,6 +21,7 @@ struct Oven: View {
                         Text("Coloque no forno")
                             .font(.title)
                             .fontWeight(.bold)
+                            .foregroundColor(.black)
                         Spacer()
                     }
                     .padding(.top, 80)

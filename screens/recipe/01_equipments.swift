@@ -19,6 +19,7 @@ struct EquipmentView: View {
                     Text("Vamos separar os utensílios?")
                         .font(.title)
                         .fontWeight(.bold)
+                        .foregroundColor(.black)
                     Spacer()
                 }
                 .padding(.top, 80)

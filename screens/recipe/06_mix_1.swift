@@ -29,6 +29,7 @@ struct Mix_1: View {
                         Text("Misture os ingredientes")
                             .font(.title)
                             .fontWeight(.bold)
+                            .foregroundColor(.black)
                         Spacer()
                     }
                     .padding(.top, 80)

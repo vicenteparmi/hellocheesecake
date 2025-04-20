@@ -43,7 +43,7 @@ struct LaunchScreen: View {
                 }
                 .background(.pink)
                 .cornerRadius(54)
-                .shadow(color: Color.black.opacity(0.2), radius: 6, x: 0, y: 2, )
+                .shadow(color: Color.black.opacity(0.2), radius: 6, x: 0, y: 2)
 
                 Spacer()
                 // Block solid

@@ -22,6 +22,7 @@ struct Strawberry_2: View {
                         Text("Reduza os morangos")
                             .font(.title)
                             .fontWeight(.bold)
+                            .foregroundColor(.black)
                         Spacer()
                     }
                     .padding(.top, 80)

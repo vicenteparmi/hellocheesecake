@@ -5,8 +5,8 @@
 //  Created by Vicente Parmigiani on 14/04/25.
 //
 
-import SwiftUI
 import SpriteKit
+import SwiftUI
 
 struct Cookies_2: View {
     @Binding var currentTab: Int
@@ -16,7 +16,7 @@ struct Cookies_2: View {
     @State private var spoonRotation: Double = 0
     @State private var butterPosition: CGSize = .zero
     @State private var butterOpacity: Double = 1.0
-    
+
     var body: some View {
         VStack {
             ZStack {
@@ -28,78 +28,62 @@ struct Cookies_2: View {
                     }
                     .padding(.top, 80)
                     .padding(.horizontal, 24)
-                    
+
                     HStack {
-                        Text("Agora é hora de adicionar manteiga à nossa mistura de cookies. Clique na colher para despejar a manteiga na tigela.")
-                            .font(.body)
-                            .foregroundColor(.black)
+                        Text(
+                            "Agora é hora de adicionar manteiga à nossa mistura de cookies. Clique na colher para despejar a manteiga na tigela."
+                        )
+                        .font(.body)
+                        .foregroundColor(.black)
                         Spacer()
                     }
                     .padding(.horizontal, 24)
                     .padding(.bottom, 16)
-                    
+
                     Spacer()
-                    
+
                     // Container da animação
                     ZStack {
                         // Tigela (sprite)
-                        Image("bowl")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 180, height: 180)
-                            .padding(.top, 100)
-                        
-                        // Conteúdo da tigela (farofa de cookies)
-                        Circle()
-                            .fill(Color.brown.opacity(0.5))
-                            .frame(width: 110, height: 50)
-                            .offset(y: 100)
-                        
-                        // Manteiga derretida na tigela (aparece quando butterAdded = true)
-                        if butterAdded {
-                            Circle()
-                                .fill(Color.yellow.opacity(0.7))
-                                .frame(width: 100, height: 40)
-                                .offset(y: 95)
-                                .transition(.opacity)
-                        }
-                        
-                        // Sprite da manteiga (separada da colher)
-                        Image("butter")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 50, height: 50)
-                            .offset(x: -40 + butterPosition.width, y: -50 + butterPosition.height)
-                            .opacity(butterOpacity)
-                        
+                        Image(
+                            butterAdded
+                                ? "Forma 3"
+                                : "Forma 2"
+                        )
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 220, height: 220)
+                        .padding(.top, 100)
+
                         // Sprite da colher (sem a manteiga)
-                        Image("spoon")
+                        Image("Colher")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 120, height: 120)
+                            .frame(width: 150, height: 150)
                             .rotationEffect(.degrees(spoonRotation))
-                            .offset(x: -50, y: -50)
+                            .offset(x: -60, y: -60)
                             .onTapGesture {
                                 if !isAnimating && !butterAdded {
                                     isAnimating = true
-                                    
+
                                     // Animação da colher girando
                                     withAnimation(.spring(response: 0.6, dampingFraction: 0.7)) {
                                         spoonRotation = 120
                                     }
-                                    
+
                                     // Animação da manteiga caindo
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                                         withAnimation(.easeIn(duration: 0.8)) {
-                                            butterPosition = CGSize(width: 40, height: 150)
+                                            butterPosition = CGSize(width: 10, height: 150)
                                             butterOpacity = 0
                                             butterAdded = true
                                         }
                                     }
-                                    
+
                                     // Animação da colher voltando
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-                                        withAnimation(.spring(response: 0.6, dampingFraction: 0.7)) {
+                                        withAnimation(.spring(response: 0.6, dampingFraction: 0.7))
+                                        {
                                             spoonRotation = 0
                                             showNextButton = true
                                         }
@@ -107,17 +91,23 @@ struct Cookies_2: View {
                                     }
                                 }
                             }
+                        Image("Manteiga")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 70, height: 70)
+                            .offset(x: -15 + butterPosition.width, y: -70 + butterPosition.height)
+                            .opacity(butterOpacity)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: 300)
-                    
+                    .frame(maxWidth: .infinity, maxHeight: 350)
+
                     Spacer()
                 }
-                
+
                 // Botão para avançar para a próxima tela
                 if showNextButton {
                     VStack {
                         Spacer()
-                        
+
                         Button {
                             currentTab += 1
                         } label: {
@@ -133,7 +123,8 @@ struct Cookies_2: View {
                         .padding(.horizontal, 40)
                         .padding(.bottom, 30)
                         .transition(.move(edge: .bottom))
-                        .animation(.spring(response: 0.6, dampingFraction: 0.7), value: showNextButton)
+                        .animation(
+                            .spring(response: 0.6, dampingFraction: 0.7), value: showNextButton)
                     }
                 }
             }
@@ -143,14 +134,13 @@ struct Cookies_2: View {
             preloadImages()
         }
     }
-    
+
     // Função para pré-carregar as imagens
     private func preloadImages() {
         let _ = [
-            UIImage(named: "spoon"),
-            UIImage(named: "butter"),
-            UIImage(named: "bowl")
+            UIImage(named: "Colher"),
+            UIImage(named: "Manteiga"),
+            UIImage(named: "Bowl 0"),
         ]
     }
 }
-

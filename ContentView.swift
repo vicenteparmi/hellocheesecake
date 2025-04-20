@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var currentTab = 0
+    @State private var currentTab = 7
 
     var body: some View {
         Group {
@@ -17,7 +17,11 @@ struct ContentView: View {
             case 4:
                 Cookies_2(currentTab: $currentTab)
             case 5:
-                Cookies_3(currentTab: $currentTab)
+                Oven(currentTab: $currentTab)
+            case 6:
+                Mix_1(currentTab: $currentTab)
+            case 7:
+                Mix_2(currentTab: $currentTab)
             default:
                 LaunchScreen(step: $currentTab)
             }

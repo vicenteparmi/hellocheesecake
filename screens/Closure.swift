@@ -36,8 +36,8 @@ struct ClosureView: View {
                     .scaleEffect(scale)
                     .rotationEffect(.degrees(rotation - 5))
                     .opacity(opacity)
-                    .shadow(radius: 10)
-                    .onAppear {
+                    .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 4)
+                        .onAppear {
                         withAnimation(
                             .spring(response: 0.6, dampingFraction: 0.6, blendDuration: 0)
                         ) {
@@ -120,6 +120,7 @@ struct ClosureView: View {
             CreditsView()
                 .interactiveDismissDisabled()
                 .presentationDragIndicator(.hidden)
+                .background(.white)
         }
         .shadow(color: .black.opacity(0.3), radius: 8, x: 0, y: 4)
     }

@@ -17,10 +17,9 @@ let package = Package(
             name: "Hello, Cheesecake",
             targets: ["AppModule"],
             bundleIdentifier: "com.parmigiani.vicente.cheesecake",
-            teamIdentifier: "4HNRCNJVZQ",
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .bowl),
+            appIcon: .asset("AppIcon"),
             accentColor: .presetColor(.pink),
             supportedDeviceFamilies: [
                 .pad,

@@ -54,14 +54,14 @@ struct Mix_1: View {
                         Image("Leite Condensado")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: UIScreen.main.bounds.width / 5, height: UIScreen.main.bounds.width / 5)
+                            .frame(width: 80, height: 80)
                             .opacity(ingredients[0] ? 1 : 0)
                             .offset(x: positions[0].x, y: positions[0].y)
                             .padding(.top, 0)
                             .onTapGesture {
                                 if ingredients[0] {
                                     withAnimation(.easeInOut(duration: 0.7)) {
-                                        positions[0] = CGPoint(x: UIScreen.main.bounds.width/3, y: 200)
+                                        positions[0] = CGPoint(x: 120, y: 200)
                                         ingredients[0] = false
                                         ingredientsAdded += 1
                                     }
@@ -74,14 +74,14 @@ struct Mix_1: View {
                         Image("Creme de Leite")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: UIScreen.main.bounds.width / 5, height: UIScreen.main.bounds.width / 5)
+                            .frame(width: 80, height: 80)
                             .opacity(ingredients[1] ? 1 : 0)
                             .offset(x: positions[1].x, y: positions[1].y)
                             .padding(.top, 0)
                             .onTapGesture {
                                 if ingredients[1] {
                                     withAnimation(.easeInOut(duration: 0.7)) {
-                                        positions[1] = CGPoint(x: UIScreen.main.bounds.width/6, y: 200)
+                                        positions[1] = CGPoint(x: 60, y: 200)
                                         ingredients[1] = false
                                         ingredientsAdded += 1
                                     }
@@ -94,14 +94,14 @@ struct Mix_1: View {
                         Image("Nata")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: UIScreen.main.bounds.width / 5, height: UIScreen.main.bounds.width / 5)
+                            .frame(width: 80, height: 80)
                             .opacity(ingredients[2] ? 1 : 0)
                             .offset(x: positions[2].x, y: positions[2].y)
                             .padding(.top, 0)
                             .onTapGesture {
                                 if ingredients[2] {
                                     withAnimation(.easeInOut(duration: 0.7)) {
-                                        positions[2] = CGPoint(x: -UIScreen.main.bounds.width/6, y: 200)
+                                        positions[2] = CGPoint(x: -60, y: 200)
                                         ingredients[2] = false
                                         ingredientsAdded += 1
                                     }
@@ -114,14 +114,14 @@ struct Mix_1: View {
                         Image("Cream Cheese")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: UIScreen.main.bounds.width / 5, height: UIScreen.main.bounds.width / 5)
+                            .frame(width: 80, height: 80)
                             .opacity(ingredients[3] ? 1 : 0)
                             .offset(x: positions[3].x, y: positions[3].y)
                             .padding(.top, 0)
                             .onTapGesture {
                                 if ingredients[3] {
                                     withAnimation(.easeInOut(duration: 0.7)) {
-                                        positions[3] = CGPoint(x: -UIScreen.main.bounds.width/3, y: 200)
+                                        positions[3] = CGPoint(x: -120, y: 200)
                                         ingredients[3] = false
                                         ingredientsAdded += 1
                                     }

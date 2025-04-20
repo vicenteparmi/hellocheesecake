@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var currentTab = 0
+    @State private var currentTab = 14
 
     var body: some View {
         Group {

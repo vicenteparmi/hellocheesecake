@@ -51,7 +51,7 @@ struct Jelly_2: View {
                         Image(isActive ? "Batedeira On" : "Batedeira Off")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: UIScreen.main.bounds.width / 3)
+                            .frame(width: 130)
                             .offset(x: xOffset, y: isActive ? -100 : -150)
                             .animation(.easeInOut(duration: 0.5), value: isActive)
                             .onTapGesture {

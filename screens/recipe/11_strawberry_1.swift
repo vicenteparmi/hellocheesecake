@@ -106,6 +106,7 @@ struct Strawberry_1: View {
                                 .font(.caption)
                                 .padding(8)
                                 .background(Color.white.opacity(0.8))
+                                .foregroundStyle(Color.black)
                                 .cornerRadius(10)
                                 .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                         }

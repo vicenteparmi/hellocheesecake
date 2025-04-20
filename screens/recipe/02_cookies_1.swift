@@ -176,8 +176,11 @@ struct Cookies_1: View {
                                     preferredStyle: .alert
                                 )
                                 alert.addAction(UIAlertAction(title: "OK", style: .default))
-                                UIApplication.shared.windows.first?.rootViewController?.present(
-                                    alert, animated: true)
+                                
+                                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                                   let rootViewController = windowScene.windows.first?.rootViewController {
+                                    rootViewController.present(alert, animated: true)
+                                }
                             } else if cookiesOnBlender > 0 {
                                 isBlending = true
 

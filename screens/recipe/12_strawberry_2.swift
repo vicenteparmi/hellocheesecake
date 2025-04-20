@@ -89,7 +89,7 @@ struct Strawberry_2: View {
                                 .offset(x: -10, y: 100)
                                 .opacity(addedJelly ? 1 : 0)
                                 .animation(.easeInOut(duration: 0.5), value: addedJelly)
-                                .onChange(of: addedJelly) { newValue in
+                                .onChange(of: addedJelly) { oldValue, newValue in
                                     if newValue {
                                         // Inicia a animação de pulsação do fogo
                                         withAnimation(.easeInOut(duration: 0.6).repeatForever(autoreverses: true)) {

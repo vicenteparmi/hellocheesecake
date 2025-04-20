@@ -204,6 +204,10 @@ struct Cookies_1: View {
                         .background(Color.white)
                         .cornerRadius(20)
                         .shadow(radius: 1)
+                        .disabled(cookiesOnBlender == 0)
+                        .opacity(cookiesOnBlender == 0 ? 0.5 : 1)
+                        .animation(
+                            .spring(response: 0.6, dampingFraction: 0.7), value: isBlending)
                         .padding(.trailing, 16)
 
                         // Botão para remover um cookie do liquidificador
@@ -237,7 +241,10 @@ struct Cookies_1: View {
                         Spacer()
 
                         Button {
-                            currentTab += 1
+                            withAnimation(.easeInOut) {
+                                // Avança para a próxima tela
+                                currentTab += 1
+                            }
                         } label: {
                             Text("Continuar")
                                 .font(.headline)

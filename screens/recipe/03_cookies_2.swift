@@ -109,7 +109,9 @@ struct Cookies_2: View {
                         Spacer()
 
                         Button {
-                            currentTab += 1
+                            withAnimation(.easeInOut) {
+                                currentTab += 1
+                            }
                         } label: {
                             Text("Continuar")
                                 .font(.headline)

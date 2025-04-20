@@ -160,7 +160,7 @@ struct IngredientsView: View {
                         .frame(maxWidth: .infinity)
                         .frame(height: 50)
                 }
-                .background(.pink)
+                .background(.orange)
                 .cornerRadius(12)
                 .shadow(radius: 8, x: 0, y: 4)
                 .padding(.horizontal, 24)

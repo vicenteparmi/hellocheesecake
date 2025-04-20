@@ -69,7 +69,7 @@ struct EquipmentView: View {
                     EquipmentCardView(
                         equipmentName: "Batedeira",
                         equipmentDescription: "Se você estiver motivado a misturar na mão não precisa",
-                        equipmentImage: "Batedeira 0ff",
+                        equipmentImage: "Batedeira Off",
                         isSelected: selectedEquipments.contains("Batedeira"),
                         onTap: { toggleEquipment("Batedeira") }
                     )
@@ -139,7 +139,7 @@ struct EquipmentView: View {
                         .frame(maxWidth: .infinity)
                         .frame(height: 50)
                 }
-                .background(.pink)
+                .background(.orange)
                 .cornerRadius(12)
                 .shadow(radius: 8, x: 0, y: 4)
                 .padding(.horizontal, 24)

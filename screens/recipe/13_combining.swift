@@ -122,7 +122,10 @@ struct Combining: View {
                         Spacer()
 
                         Button {
-                            currentTab += 1
+                            withAnimation(.bouncy) {
+                                // Avançar para a próxima tela
+                                currentTab += 1
+                            }
                         } label: {
                             Text("Continuar")
                                 .font(.headline)
@@ -142,18 +145,5 @@ struct Combining: View {
                 }
             }
         }
-        .onAppear {
-            // Preparar as imagens no início
-            preloadImages()
-        }
-    }
-
-    // Função para pré-carregar as imagens
-    private func preloadImages() {
-        let _ = [
-            UIImage(named: "Forno 0"),
-            UIImage(named: "Forno 1"),
-            UIImage(named: "Forma 3"),
-        ]
     }
 }

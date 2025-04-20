@@ -67,7 +67,10 @@ struct Jelly_1: View {
                     VStack {
                         Spacer()
                         Button {
-                            currentTab += 1
+                            withAnimation(.easeInOut) {
+                                // Avançar para a próxima tela
+                                currentTab += 1
+                            }
                         } label: {
                             Text("Continuar")
                                 .font(.headline)

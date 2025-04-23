@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Subsonic
 
 struct Cookies_1: View {
     @Binding var currentTab: Int

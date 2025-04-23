@@ -42,7 +42,7 @@ struct LaunchScreen: View {
                         .foregroundStyle(.white)
                         .font(.custom("Poppins-Bold", size: 18))
                         .fontWeight(.bold)
-                        .padding(48)
+                        .padding()
                         .frame(width: Double.infinity, height: 50)
                 }
                 .background(.pink)

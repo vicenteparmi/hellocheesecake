@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Subsonic
 
 struct Oven: View {
     @Binding var currentTab: Int

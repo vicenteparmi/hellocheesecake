@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Subsonic
 
 struct Jelly_1: View {
     @Binding var currentTab: Int

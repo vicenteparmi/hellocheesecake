@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Subsonic
 
 struct EquipmentView: View {
     @Binding var currentTab: Int

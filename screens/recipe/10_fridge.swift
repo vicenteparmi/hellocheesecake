@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Subsonic
 
 struct Fridge: View {
     @Binding var currentTab: Int

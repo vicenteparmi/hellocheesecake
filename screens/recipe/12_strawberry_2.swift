@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Subsonic
 
 struct Strawberry_2: View {
     @Binding var currentTab: Int

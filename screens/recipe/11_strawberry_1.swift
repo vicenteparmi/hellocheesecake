@@ -7,6 +7,7 @@
 
 import SwiftUI
 import math_h
+import Subsonic
 
 struct Strawberry_1: View {
     @Binding var currentTab: Int

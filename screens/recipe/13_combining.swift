@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Subsonic
 
 struct Combining: View {
     @Binding var currentTab: Int

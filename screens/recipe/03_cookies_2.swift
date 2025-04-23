@@ -7,6 +7,7 @@
 
 import SpriteKit
 import SwiftUI
+import Subsonic
 
 struct Cookies_2: View {
     @Binding var currentTab: Int

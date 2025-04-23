@@ -6,6 +6,7 @@
 //
 import SwiftUI
 import SpriteKit
+import Subsonic
 
 struct IngredientsView: View {
     @Binding var currentTab: Int

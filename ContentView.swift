@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var currentTab = 0
+    @State private var currentTab = 10
 
     var body: some View {
         Group {
             switch currentTab {
             case 0:
-                LaunchScreen(step: $currentTab)
+              LaunchScreen(step: $currentTab)
             case 1:
                 IngredientsView(currentTab: $currentTab)
             case 2:

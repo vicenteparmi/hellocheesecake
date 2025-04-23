@@ -53,9 +53,11 @@ struct Strawberry_2: View {
                             .animation(.easeInOut(duration: 0.5), value: addedJelly)
                             .onTapGesture {
                                 addedJelly = true
+                                play(sound: "zup.mp3")
                                 
                                 // Liga o fogo, depois de 3 segundos desliga e mostra o botão de próximo
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                    play(sound: "donesomething.mp3")
                                     showNextButton = true
                                 }
                             }
@@ -70,6 +72,7 @@ struct Strawberry_2: View {
                             .opacity(addedSugar ? 0 : 1)
                             .animation(.easeInOut(duration: 0.5), value: addedSugar)
                             .onTapGesture {
+                                play(sound: "paperlike.mp3")
                                 addedSugar = true
                             }
 
@@ -90,13 +93,13 @@ struct Strawberry_2: View {
                                 .opacity(addedJelly ? 1 : 0)
                                 .animation(.easeInOut(duration: 0.5), value: addedJelly)
                                 .onChange(of: addedJelly) { oldValue, newValue in
-                                    if newValue {
-                                        // Inicia a animação de pulsação do fogo
+                                    if newValue {                                        // Inicia a animação de pulsação do fogo
                                         withAnimation(.easeInOut(duration: 0.6).repeatForever(autoreverses: true)) {
                                             fireScale = 1.1
                                         }
                                     } else {
                                         // Para a animação quando o fogo é desligado
+
                                         withAnimation {
                                             fireScale = 1.0
                                         }
@@ -115,9 +118,11 @@ struct Strawberry_2: View {
 
                 // Botão para avançar
                 if showNextButton {
+                    
                     VStack {
                         Spacer()
                         Button {
+                            play(sound: "blingnext1.mp3")
                             withAnimation(.easeInOut) {
                                 // Avançar para a próxima tela
                                 currentTab += 1

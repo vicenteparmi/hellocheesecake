@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Subsonic
 
 struct Mix_2: View {
     @Binding var currentTab: Int
@@ -14,6 +15,7 @@ struct Mix_2: View {
     @State private var timer: Timer?
     @State private var xOffset: CGFloat = 0
     @State private var hasCompleted: Bool = false
+    @StateObject private var sound = SubsonicPlayer(sound: "beating.mp3")
     
     var body: some View {
         VStack {
@@ -63,6 +65,9 @@ struct Mix_2: View {
                                 isActive.toggle()
                                 
                                 if isActive {
+                                    // Inicia o som
+                                    sound.play()
+                                    
                                     // Inicia a animação lateral
                                     withAnimation(.easeInOut(duration: 0.3).repeatForever(autoreverses: true)) {
                                         xOffset = 20
@@ -70,7 +75,7 @@ struct Mix_2: View {
                                     
                                     // Inicia o timer para contar 5 segundos continuamente
                                     timer?.invalidate()
-                                    timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { _ in
+                                    timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { _ in
                                         DispatchQueue.main.async {
                                             isActive = false
                                             hasCompleted = true
@@ -82,6 +87,8 @@ struct Mix_2: View {
                                     }
                                     
                                 } else {
+                                    // Para o som
+                                    sound.stop()
                                     // Cancela o timer se parar antes
                                     timer?.invalidate()
                                     withAnimation {
@@ -104,6 +111,7 @@ struct Mix_2: View {
                     VStack {
                         Spacer()
                         Button {
+                            play(sound: "blingnext1.mp3")
                             withAnimation(.easeInOut) {
                                 // Avançar para a próxima tela
                                 currentTab += 1

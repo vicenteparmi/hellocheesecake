@@ -68,6 +68,8 @@ struct Cookies_2: View {
                             .onTapGesture {
                                 if !isAnimating && !butterAdded {
                                     isAnimating = true
+                                    
+                                    play(sound: "poing.mp3")
 
                                     // Animação da colher girando
                                     withAnimation(.spring(response: 0.6, dampingFraction: 0.7)) {
@@ -100,7 +102,37 @@ struct Cookies_2: View {
                             .frame(width: 70, height: 70)
                             .offset(x: -15 + butterPosition.width, y: -70 + butterPosition.height)
                             .opacity(butterOpacity)
-                    }
+                            .onTapGesture {
+                                if !isAnimating && !butterAdded {
+                                    isAnimating = true
+                                    
+                                    play(sound: "poing.mp3")
+
+                                    // Animação da colher girando
+                                    withAnimation(.spring(response: 0.6, dampingFraction: 0.7)) {
+                                        spoonRotation = 120
+                                    }
+
+                                    // Animação da manteiga caindo
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                        withAnimation(.easeIn(duration: 0.8)) {
+                                            butterPosition = CGSize(width: 10, height: 150)
+                                            butterOpacity = 0
+                                            butterAdded = true
+                                        }
+                                    }
+
+                                    // Animação da colher voltando
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                                        withAnimation(.spring(response: 0.6, dampingFraction: 0.7))
+                                        {
+                                            spoonRotation = 0
+                                            showNextButton = true
+                                        }
+                                        isAnimating = false
+                                    }
+                                }
+                            }                    }
                     .frame(maxWidth: .infinity, maxHeight: 350)
 
                     Spacer()
@@ -112,6 +144,8 @@ struct Cookies_2: View {
                         Spacer()
 
                         Button {
+                            play(sound: "blingnext1.mp3")
+
                             withAnimation(.easeInOut) {
                                 currentTab += 1
                             }

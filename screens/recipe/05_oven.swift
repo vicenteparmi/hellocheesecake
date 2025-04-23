@@ -12,7 +12,8 @@ struct Oven: View {
     @State private var showNextButton = false
     @State private var isBetterPlaced = false
     @State private var isOnOven = false
-
+    @State private var isAnimating = false
+    
     var body: some View {
         VStack {
             ZStack {
@@ -54,12 +55,20 @@ struct Oven: View {
                         .padding(.top, 0)
                         .opacity(isOnOven ? 0 : 1)
                         .animation(.easeInOut(duration: 0.5), value: isOnOven)
+                        .scaleEffect(isAnimating ? 1 : 0.95)
+                        .animation(.easeInOut(duration: 1).repeatForever(autoreverses: true), value: isAnimating)
+                        .onAppear {
+                            isAnimating = true
+                        }
                         .onTapGesture {
                             if !isBetterPlaced {
+                                play(sound: "paperlike.mp3")
                                 isBetterPlaced = true
                             } else {
+                                play(sound: "ovenopen.mp3")
                                 isOnOven = true
                                 showNextButton = true
+                                isAnimating = false
                             }
                         }
 
@@ -89,6 +98,8 @@ struct Oven: View {
                         Spacer()
 
                         Button {
+                            play(sound: "blingnext2.mp3")
+                            
                             withAnimation(.easeInOut) {
                                 // Avançar para a próxima tela
                                 currentTab += 1

@@ -35,10 +35,19 @@ let package = Package(
             appCategory: .lifestyle
         )
     ],
+    dependencies: [
+        .package(url: "https://github.com/twostraws/Subsonic", "0.2.0"..<"1.0.0")
+    ],
     targets: [
         .executableTarget(
             name: "AppModule",
-            path: "."
+            dependencies: [
+                .product(name: "Subsonic", package: "Subsonic")
+            ],
+            path: ".",
+            resources: [
+                .process("Resources")
+            ]
         )
     ],
     swiftLanguageVersions: [.version("6")]

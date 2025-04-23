@@ -10,6 +10,7 @@ import SwiftUI
 struct Jelly_1: View {
     @Binding var currentTab: Int
     @State var addedJelly: Bool = false
+    @State private var isAnimating = false
     
     var body: some View {
         VStack {
@@ -49,10 +50,16 @@ struct Jelly_1: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 75)
+                            .scaleEffect(isAnimating ? 1 : 0.95)
+                            .animation(.easeInOut(duration: 1).repeatForever(autoreverses: true), value: isAnimating)
+                            .onAppear {
+                                isAnimating = true
+                            }
                             .offset(x: -10, y: addedJelly ? -80 : -150)
                             .opacity(addedJelly ? 0 : 1)
                             .animation(.easeInOut(duration: 0.5), value: addedJelly)
                             .onTapGesture {
+                                play(sound: "zup.mp3")
                                 addedJelly = true
                             }
                     }
@@ -70,6 +77,7 @@ struct Jelly_1: View {
                     VStack {
                         Spacer()
                         Button {
+                            play(sound: "blingnext1.mp3")
                             withAnimation(.easeInOut) {
                                 // Avançar para a próxima tela
                                 currentTab += 1

@@ -1,9 +1,11 @@
+import AVFoundation
 import SwiftUI
+import Subsonic
 
 struct LaunchScreen: View {
     @Binding public var step: Int
-
     @State var pulseScale = 1.0
+    @State private var audioPlayer: AVAudioPlayer?
 
     let brown = Color(red: 47 / 255, green: 23 / 255, blue: 15 / 255)
     let fadedYellow: Color = .orange.opacity(0.1)
@@ -30,9 +32,11 @@ struct LaunchScreen: View {
                     .frame(height: 32)
                 // Begin button
                 Button {
+                    play(sound: "blingnextphase.mp3")
                     withAnimation {
                         step = 1
                     }
+
                 } label: {
                     Text("Começar")
                         .foregroundStyle(.white)

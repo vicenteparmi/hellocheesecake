@@ -69,6 +69,43 @@ struct Cookies_1: View {
                             isBlending
                                 ? Animation.linear(duration: 0.1).repeatForever(autoreverses: true)
                                 : .default, value: isBlending)
+                        .onTapGesture {
+                            if cookiesOnBlender > 2 && !isBlending {
+                                play(sound: "errorliqui.mp3")
+                                // Alerta avisando para colocar menos cookies no liquidificador para moer melhor
+                                let alert = UIAlertController(
+                                    title: "Atenção",
+                                    message:
+                                        "Coloque menos bolacha no liquidificador para moer melhor.",
+                                    preferredStyle: .alert
+                                )
+                                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                                
+                                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                                   let rootViewController = windowScene.windows.first?.rootViewController {
+                                    rootViewController.present(alert, animated: true)
+                                }
+                            } else if cookiesOnBlender > 0 {
+                                isBlending = true
+                                
+                                play(sound: "liquimix1.mp3")
+                                
+                                // Para após 2 segundos
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                    isBlending = false
+                                    blendedCookies += cookiesOnBlender
+                                    cookiesOnBlender = 0
+                                    
+                                    // Verifica se todos já foram batidos
+                                    if blendedCookies == 6 {
+                                        showNextButton = true
+                                    } else {
+                                        // Se não, mostra o botão "Continuar"
+                                        showNextButton = false
+                                    }
+                                }
+                            }
+                        }
 
                         // Cookies inteiros e batidos lado a lado
 
@@ -121,6 +158,14 @@ struct Cookies_1: View {
                                 minHeight: 100,
                                 maxHeight: 100,
                                 alignment: .bottomTrailing)
+                            .onTapGesture {
+                                play(sound: "buttonpleck.mp3")
+                                
+                                if remainingCookies > 0 && cookiesOnBlender < 3 {
+                                    cookiesOnBlender += 1
+                                    remainingCookies -= 1
+                                }
+                            }
 
                             Spacer()
                                 .frame(width: 16)
@@ -148,6 +193,8 @@ struct Cookies_1: View {
 
                         // Botão para adicionar um cookie
                         Button {
+                            play(sound: "buttonpleck.mp3")
+                            
                             if remainingCookies > 0 && cookiesOnBlender < 3 {
                                 cookiesOnBlender += 1
                                 remainingCookies -= 1
@@ -168,6 +215,7 @@ struct Cookies_1: View {
                         // Botão para bater os cookies no liquidificador (alternar)
                         Button {
                             if cookiesOnBlender > 2 && !isBlending {
+                                play(sound: "errorliqui.mp3")
                                 // Alerta avisando para colocar menos cookies no liquidificador para moer melhor
                                 let alert = UIAlertController(
                                     title: "Atenção",
@@ -183,9 +231,11 @@ struct Cookies_1: View {
                                 }
                             } else if cookiesOnBlender > 0 {
                                 isBlending = true
+                                
+                                play(sound: "liquimix1.mp3")
 
                                 // Para após 2 segundos
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                                     isBlending = false
                                     blendedCookies += cookiesOnBlender
                                     cookiesOnBlender = 0
@@ -219,6 +269,8 @@ struct Cookies_1: View {
 
                         // Botão para remover um cookie do liquidificador
                         Button {
+                            play(sound: "buttonpleck.mp3")
+                            
                             if cookiesOnBlender > 0 {
                                 remainingCookies += 1
                                 cookiesOnBlender -= 1
@@ -248,6 +300,8 @@ struct Cookies_1: View {
                         Spacer()
 
                         Button {
+                            play(sound: "blingnext1.mp3")
+                            
                             withAnimation(.easeInOut) {
                                 // Avança para a próxima tela
                                 currentTab += 1

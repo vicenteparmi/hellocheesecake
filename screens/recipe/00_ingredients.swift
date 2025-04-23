@@ -5,11 +5,15 @@
 //  Created by Vicente Parmigiani on 14/04/25.
 //
 import SwiftUI
+import SpriteKit
 
 struct IngredientsView: View {
     @Binding var currentTab: Int
     @State private var showAlert = false
     @State private var selectedIngredients = Set<String>()
+    
+    // Sounds
+
 
     var body: some View {
         VStack {
@@ -146,6 +150,7 @@ struct IngredientsView: View {
                 
                 Button {
                     if selectedIngredients.count == 9 {
+                        play(sound: "blingnext1.mp3")
                         withAnimation {
                             currentTab = 2
                         }
@@ -176,6 +181,8 @@ struct IngredientsView: View {
     }
 
     private func toggleIngredient(_ ingredient: String) {
+        play(sound: "buttonpleck.mp3")
+        
         if selectedIngredients.contains(ingredient) {
             selectedIngredients.remove(ingredient)
         } else {

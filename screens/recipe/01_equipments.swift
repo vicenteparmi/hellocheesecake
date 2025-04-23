@@ -125,6 +125,7 @@ struct EquipmentView: View {
                 
                 Button {
                     if selectedEquipments.count == 6 {
+                        play(sound: "blingnext1.mp3")
                         withAnimation {
                             currentTab = 3
                         }
@@ -155,6 +156,8 @@ struct EquipmentView: View {
     }
 
     private func toggleEquipment(_ equipment: String) {
+        play(sound: "buttonpleck.mp3")
+        
         if selectedEquipments.contains(equipment) {
             selectedEquipments.remove(equipment)
         } else {

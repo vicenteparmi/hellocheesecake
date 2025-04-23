@@ -54,6 +54,7 @@ struct Combining: View {
                             .onTapGesture {
                                 withAnimation(.easeInOut(duration: 0.5)) {
                                     isPoured = true
+                                    play(sound: "pouring.mp3")
                                 }
                             }
                         }
@@ -99,6 +100,7 @@ struct Combining: View {
                     .animation(.easeInOut(duration: 0.5), value: isPoured)
                     .onTapGesture {
                         if !isFinished && isPoured {
+                            play(sound: "blingnext2.mp3")
                             withAnimation(.easeInOut(duration: 0.5)) {
                                 isFinished = true
                                 showNextButton = true
@@ -125,6 +127,7 @@ struct Combining: View {
                         Spacer()
 
                         Button {
+                            play(sound: "importantfinish.mp3")
                             withAnimation(.bouncy) {
                                 // Avançar para a próxima tela
                                 currentTab += 1

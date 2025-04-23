@@ -12,6 +12,7 @@ struct Fridge: View {
     @State private var showNextButton = false
     @State private var isPoured = false
     @State private var isOnFidge = false
+    @State private var isAnimating = false
 
     var body: some View {
         VStack {
@@ -56,8 +57,20 @@ struct Fridge: View {
                             .rotationEffect(isPoured ? .degrees(-120) : .degrees(0))
                             .animation(.easeInOut(duration: 0.5), value: isPoured)
                             .onTapGesture {
+                                play(sound: "pouring.mp3")
+                                isAnimating = false
                                 withAnimation(.easeInOut(duration: 0.5)) {
                                     isPoured = true
+                                }
+                            }
+                            .scaleEffect(isAnimating ? 1 : 0.95)
+                            .animation(.easeInOut(duration: 0.5).repeatForever(autoreverses: true), value: isAnimating)
+                            .onAppear {
+                                isAnimating = true
+                            }
+                            .onChange(of: isPoured) { poured in
+                                if poured {
+                                    isAnimating = false
                                 }
                             }
                         }
@@ -106,6 +119,7 @@ struct Fridge: View {
                     .animation(.easeInOut(duration: 0.5), value: isPoured)
                     .onTapGesture {
                         if !isOnFidge && isPoured {
+                            play(sound: "oventimer.mp3")
                             withAnimation(.easeInOut(duration: 0.5)) {
                                 isOnFidge = true
                                 showNextButton = true
@@ -132,6 +146,7 @@ struct Fridge: View {
                         Spacer()
 
                         Button {
+                            play(sound: "blingnext1.mp3")
                             withAnimation(.easeInOut) {
                                 // Avançar para a próxima tela
                                 currentTab += 1

@@ -41,6 +41,7 @@ struct EquipmentView: View {
                     Spacer(minLength: 32)
                     
                     Button {
+                        play(sound: "buttonpleck.mp3")
                         if selectedEquipments.count == 6 {
                             selectedEquipments.removeAll()
                         } else {

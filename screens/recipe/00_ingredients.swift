@@ -44,6 +44,7 @@ struct IngredientsView: View {
                     Spacer(minLength: 32)
                     
                     Button {
+                        play(sound: "buttonpleck.mp3")
                         if selectedIngredients.count == 9 {
                             selectedIngredients.removeAll()
                         } else {

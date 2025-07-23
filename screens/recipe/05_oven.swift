@@ -63,10 +63,10 @@ struct Oven: View {
                         }
                         .onTapGesture {
                             if !isBetterPlaced {
-                                play(sound: "paperlike.mp3")
+                                play(sound: audioFileName("paperlike.mp3"))
                                 isBetterPlaced = true
                             } else {
-                                play(sound: "ovenopen.mp3")
+                                play(sound: audioFileName("ovenopen.mp3"))
                                 isOnOven = true
                                 showNextButton = true
                                 isAnimating = false
@@ -99,7 +99,7 @@ struct Oven: View {
                         Spacer()
 
                         Button {
-                            play(sound: "blingnext2.mp3")
+                            play(sound: audioFileName("blingnext2.mp3"))
                             
                             withAnimation(.easeInOut) {
                                 // Avançar para a próxima tela

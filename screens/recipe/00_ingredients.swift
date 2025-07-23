@@ -44,7 +44,7 @@ struct IngredientsView: View {
                     Spacer(minLength: 32)
                     
                     Button {
-                        play(sound: "buttonpleck.mp3")
+                        play(sound: audioFileName("buttonpleck.mp3"))
                         if selectedIngredients.count == 9 {
                             selectedIngredients.removeAll()
                         } else {
@@ -152,7 +152,7 @@ struct IngredientsView: View {
                 
                 Button {
                     if selectedIngredients.count == 9 {
-                        play(sound: "blingnext1.mp3")
+                        play(sound: audioFileName("blingnext1.mp3"))
                         withAnimation {
                             currentTab = 2
                         }
@@ -183,7 +183,7 @@ struct IngredientsView: View {
     }
 
     private func toggleIngredient(_ ingredient: String) {
-        play(sound: "buttonpleck.mp3")
+        play(sound: audioFileName("buttonpleck.mp3"))
         
         if selectedIngredients.contains(ingredient) {
             selectedIngredients.remove(ingredient)

@@ -118,7 +118,7 @@ struct Strawberry_1: View {
                             VStack {
                                 Spacer()
                                 Button {
-                                    play(sound: "blingnext1.mp3")
+                                    play(sound: audioFileName("blingnext1.mp3"))
                                     withAnimation(.easeInOut) {
                                         // Avançar para a próxima tela
                                         currentTab += 1
@@ -225,7 +225,7 @@ struct Strawberry_1: View {
     // Função para animação de shake
     @MainActor
     private func shakeAnimation() {
-        play(sound: "smash2.mp3")
+        play(sound: audioFileName("smash2.mp3"))
         
         let duration = 0.1
 

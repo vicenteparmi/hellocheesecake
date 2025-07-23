@@ -60,7 +60,7 @@ struct Mix_1: View {
                             .offset(x: positions[0].x, y: positions[0].y)
                             .padding(.top, 0)
                             .onTapGesture {
-                                play(sound: "zup.mp3")
+                                play(sound: audioFileName("zup.mp3"))
                                 if ingredients[0] {
                                     withAnimation(.easeInOut(duration: 0.7)) {
                                         positions[0] = CGPoint(x: 120, y: 200)
@@ -81,7 +81,7 @@ struct Mix_1: View {
                             .offset(x: positions[1].x, y: positions[1].y)
                             .padding(.top, 0)
                             .onTapGesture {
-                                play(sound: "zup.mp3")
+                                play(sound: audioFileName("zup.mp3"))
                                 if ingredients[1] {
                                     withAnimation(.easeInOut(duration: 0.7)) {
                                         positions[1] = CGPoint(x: 60, y: 200)
@@ -102,7 +102,7 @@ struct Mix_1: View {
                             .offset(x: positions[2].x, y: positions[2].y)
                             .padding(.top, 0)
                             .onTapGesture {
-                                play(sound: "zup.mp3")
+                                play(sound: audioFileName("zup.mp3"))
                                 if ingredients[2] {
                                     withAnimation(.easeInOut(duration: 0.7)) {
                                         positions[2] = CGPoint(x: -60, y: 200)
@@ -123,7 +123,7 @@ struct Mix_1: View {
                             .offset(x: positions[3].x, y: positions[3].y)
                             .padding(.top, 0)
                             .onTapGesture {
-                                play(sound: "zup.mp3")
+                                play(sound: audioFileName("zup.mp3"))
                                 if ingredients[3] {
                                     withAnimation(.easeInOut(duration: 0.7)) {
                                         positions[3] = CGPoint(x: -120, y: 200)
@@ -163,7 +163,7 @@ struct Mix_1: View {
                         Spacer()
 
                         Button {
-                            play(sound: "blingnext1.mp3")
+                            play(sound: audioFileName("blingnext1.mp3"))
                             withAnimation(.easeInOut) {
                                 // Avançar para a próxima tela
                                 currentTab += 1

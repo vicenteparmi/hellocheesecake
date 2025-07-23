@@ -32,7 +32,7 @@ struct LaunchScreen: View {
                     .frame(height: 32)
                 // Begin button
                 Button {
-                    play(sound: "blingnextphase.mp3")
+                    play(sound: audioFileName("blingnextphase.mp3"))
                     withAnimation {
                         step = 1
                     }

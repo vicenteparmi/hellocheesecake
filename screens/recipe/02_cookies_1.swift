@@ -72,7 +72,7 @@ struct Cookies_1: View {
                                 : .default, value: isBlending)
                         .onTapGesture {
                             if cookiesOnBlender > 2 && !isBlending {
-                                play(sound: "errorliqui.mp3")
+                                play(sound: audioFileName("errorliqui.mp3"))
                                 // Alerta avisando para colocar menos cookies no liquidificador para moer melhor
                                 let alert = UIAlertController(
                                     title: "Atenção",
@@ -89,7 +89,7 @@ struct Cookies_1: View {
                             } else if cookiesOnBlender > 0 {
                                 isBlending = true
                                 
-                                play(sound: "liquimix1.mp3")
+                                play(sound: audioFileName("liquimix1.mp3"))
                                 
                                 // Para após 2 segundos
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
@@ -160,7 +160,7 @@ struct Cookies_1: View {
                                 maxHeight: 100,
                                 alignment: .bottomTrailing)
                             .onTapGesture {
-                                play(sound: "buttonpleck.mp3")
+                                play(sound: audioFileName("buttonpleck.mp3"))
                                 
                                 if remainingCookies > 0 && cookiesOnBlender < 3 {
                                     cookiesOnBlender += 1
@@ -192,16 +192,16 @@ struct Cookies_1: View {
                     // Controles
                     HStack {
 
-                        // Botão para adicionar um cookie
+                        // Botão para remover um cookie do liquidificador
                         Button {
-                            play(sound: "buttonpleck.mp3")
+                            play(sound: audioFileName("buttonpleck.mp3"))
                             
-                            if remainingCookies > 0 && cookiesOnBlender < 3 {
-                                cookiesOnBlender += 1
-                                remainingCookies -= 1
+                            if cookiesOnBlender > 0 {
+                                remainingCookies += 1
+                                cookiesOnBlender -= 1
                             }
                         } label: {
-                            Image(systemName: "plus.circle.fill")
+                            Image(systemName: "minus.circle.fill")
                                 .foregroundColor(.orange)
                                 .font(.title)
                         }
@@ -209,14 +209,14 @@ struct Cookies_1: View {
                         .background(Color.white)
                         .cornerRadius(20)
                         .shadow(radius: 1)
-                        .padding(.trailing, 16)
                         .disabled(isBlending)
                         .opacity(isBlending ? 0.5 : 1)
+                        .padding(.trailing, 16)
 
                         // Botão para bater os cookies no liquidificador (alternar)
                         Button {
                             if cookiesOnBlender > 2 && !isBlending {
-                                play(sound: "errorliqui.mp3")
+                                play(sound: audioFileName("errorliqui.mp3"))
                                 // Alerta avisando para colocar menos cookies no liquidificador para moer melhor
                                 let alert = UIAlertController(
                                     title: "Atenção",
@@ -233,7 +233,7 @@ struct Cookies_1: View {
                             } else if cookiesOnBlender > 0 {
                                 isBlending = true
                                 
-                                play(sound: "liquimix1.mp3")
+                                play(sound: audioFileName("liquimix1.mp3"))
 
                                 // Para após 2 segundos
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
@@ -268,16 +268,16 @@ struct Cookies_1: View {
                         )
                         .padding(.trailing, 16)
 
-                        // Botão para remover um cookie do liquidificador
+                        // Botão para adicionar um cookie
                         Button {
-                            play(sound: "buttonpleck.mp3")
+                            play(sound: audioFileName("buttonpleck.mp3"))
                             
-                            if cookiesOnBlender > 0 {
-                                remainingCookies += 1
-                                cookiesOnBlender -= 1
+                            if remainingCookies > 0 && cookiesOnBlender < 3 {
+                                cookiesOnBlender += 1
+                                remainingCookies -= 1
                             }
                         } label: {
-                            Image(systemName: "minus.circle.fill")
+                            Image(systemName: "plus.circle.fill")
                                 .foregroundColor(.orange)
                                 .font(.title)
                         }
@@ -301,7 +301,7 @@ struct Cookies_1: View {
                         Spacer()
 
                         Button {
-                            play(sound: "blingnext1.mp3")
+                            play(sound: audioFileName("blingnext1.mp3"))
                             
                             withAnimation(.easeInOut) {
                                 // Avança para a próxima tela

@@ -70,7 +70,7 @@ struct Cookies_2: View {
                                 if !isAnimating && !butterAdded {
                                     isAnimating = true
                                     
-                                    play(sound: "poing.mp3")
+                                    play(sound: audioFileName("poing.mp3"))
 
                                     // Animação da colher girando
                                     withAnimation(.spring(response: 0.6, dampingFraction: 0.7)) {
@@ -107,7 +107,7 @@ struct Cookies_2: View {
                                 if !isAnimating && !butterAdded {
                                     isAnimating = true
                                     
-                                    play(sound: "poing.mp3")
+                                    play(sound: audioFileName("poing.mp3"))
 
                                     // Animação da colher girando
                                     withAnimation(.spring(response: 0.6, dampingFraction: 0.7)) {
@@ -145,7 +145,7 @@ struct Cookies_2: View {
                         Spacer()
 
                         Button {
-                            play(sound: "blingnext1.mp3")
+                            play(sound: audioFileName("blingnext1.mp3"))
 
                             withAnimation(.easeInOut) {
                                 currentTab += 1

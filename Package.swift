@@ -19,7 +19,7 @@ let package = Package(
             bundleIdentifier: "com.parmigiani.vicente.cheesecake",
             teamIdentifier: "4HNRCNJVZQ",
             displayVersion: "1.0",
-            bundleVersion: "1",
+            bundleVersion: "2",
             appIcon: .asset("AppIcon"),
             accentColor: .presetColor(.pink),
             supportedDeviceFamilies: [

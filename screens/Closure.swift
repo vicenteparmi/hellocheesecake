@@ -70,7 +70,7 @@ struct ClosureView: View {
 
                         VStack {
                             Button(action: {
-                                play(sound: "zup.mp3")
+                                play(sound: audioFileName("zup.mp3"))
                                 showCredits = true
                             }) {
                                 Text("Ver Créditos")

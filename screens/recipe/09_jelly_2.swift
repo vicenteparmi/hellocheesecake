@@ -14,7 +14,7 @@ struct Jelly_2: View {
     @State private var timer: Timer?
     @State private var xOffset: CGFloat = 0
     @State private var hasCompleted: Bool = false
-    @StateObject private var sound = SubsonicPlayer(sound: "beating.mp3")
+    @StateObject private var sound = SubsonicPlayer(sound: audioFileName("beating.mp3"))
     
     var body: some View {
         VStack {
@@ -109,7 +109,7 @@ struct Jelly_2: View {
                     VStack {
                         Spacer()
                         Button {
-                            play(sound: "blingnext1.mp3")
+                            play(sound: audioFileName("blingnext1.mp3"))
                             withAnimation(.easeInOut) {
                                 // Avançar para a próxima tela
                                 currentTab += 1

@@ -60,7 +60,7 @@ struct Jelly_1: View {
                             .opacity(addedJelly ? 0 : 1)
                             .animation(.easeInOut(duration: 0.5), value: addedJelly)
                             .onTapGesture {
-                                play(sound: "zup.mp3")
+                                play(sound: audioFileName("zup.mp3"))
                                 addedJelly = true
                             }
                     }
@@ -78,7 +78,7 @@ struct Jelly_1: View {
                     VStack {
                         Spacer()
                         Button {
-                            play(sound: "blingnext1.mp3")
+                            play(sound: audioFileName("blingnext1.mp3"))
                             withAnimation(.easeInOut) {
                                 // Avançar para a próxima tela
                                 currentTab += 1

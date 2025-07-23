@@ -54,11 +54,11 @@ struct Strawberry_2: View {
                             .animation(.easeInOut(duration: 0.5), value: addedJelly)
                             .onTapGesture {
                                 addedJelly = true
-                                play(sound: "zup.mp3")
+                                play(sound: audioFileName("zup.mp3"))
                                 
                                 // Liga o fogo, depois de 3 segundos desliga e mostra o botão de próximo
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                    play(sound: "donesomething.mp3")
+                                    play(sound: audioFileName("donesomething.mp3"))
                                     showNextButton = true
                                 }
                             }
@@ -73,7 +73,7 @@ struct Strawberry_2: View {
                             .opacity(addedSugar ? 0 : 1)
                             .animation(.easeInOut(duration: 0.5), value: addedSugar)
                             .onTapGesture {
-                                play(sound: "paperlike.mp3")
+                                play(sound: audioFileName("paperlike.mp3"))
                                 addedSugar = true
                             }
 
@@ -123,7 +123,7 @@ struct Strawberry_2: View {
                     VStack {
                         Spacer()
                         Button {
-                            play(sound: "blingnext1.mp3")
+                            play(sound: audioFileName("blingnext1.mp3"))
                             withAnimation(.easeInOut) {
                                 // Avançar para a próxima tela
                                 currentTab += 1

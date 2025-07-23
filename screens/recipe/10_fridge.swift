@@ -58,7 +58,7 @@ struct Fridge: View {
                             .rotationEffect(isPoured ? .degrees(-120) : .degrees(0))
                             .animation(.easeInOut(duration: 0.5), value: isPoured)
                             .onTapGesture {
-                                play(sound: "pouring.mp3")
+                                play(sound: audioFileName("pouring.mp3"))
                                 isAnimating = false
                                 withAnimation(.easeInOut(duration: 0.5)) {
                                     isPoured = true
@@ -69,8 +69,8 @@ struct Fridge: View {
                             .onAppear {
                                 isAnimating = true
                             }
-                            .onChange(of: isPoured) { poured in
-                                if poured {
+                            .onChange(of: isPoured) { oldValue, newValue in
+                                if newValue {
                                     isAnimating = false
                                 }
                             }
@@ -120,7 +120,7 @@ struct Fridge: View {
                     .animation(.easeInOut(duration: 0.5), value: isPoured)
                     .onTapGesture {
                         if !isOnFidge && isPoured {
-                            play(sound: "oventimer.mp3")
+                            play(sound: audioFileName("oventimer.mp3"))
                             withAnimation(.easeInOut(duration: 0.5)) {
                                 isOnFidge = true
                                 showNextButton = true
@@ -147,7 +147,7 @@ struct Fridge: View {
                         Spacer()
 
                         Button {
-                            play(sound: "blingnext1.mp3")
+                            play(sound: audioFileName("blingnext1.mp3"))
                             withAnimation(.easeInOut) {
                                 // Avançar para a próxima tela
                                 currentTab += 1
